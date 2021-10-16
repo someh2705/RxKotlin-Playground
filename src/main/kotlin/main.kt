@@ -1,5 +1,5 @@
-import example.*
+import example.helloObserver.HelloObserver
 
 fun main() {
-    HelloRxKotlin().main()
+    HelloObserver().main()
 }
