@@ -1,4 +1,4 @@
-package example
+package example.HelloRxKotlin
 
 import io.reactivex.rxjava3.core.Observable
 
