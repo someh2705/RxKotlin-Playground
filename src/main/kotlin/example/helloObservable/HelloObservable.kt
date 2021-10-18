@@ -1,5 +1,6 @@
 package example.helloObservable
 
+import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.functions.Consumer
@@ -19,7 +20,23 @@ class HelloObservable {
         })
     }
 
+    private fun maybeObservable() {
+        val maybe = Maybe.just("Hello Maybe")
+
+        maybe.subscribe { it ->
+            println(it)
+        }
+
+        maybe.subscribeBy(onSuccess = {
+            println(it)
+        })
+    }
+
     fun main() {
+        println("SingleObservable")
         singleObservable()
+
+        println("MaybeObservable")
+        maybeObservable()
     }
 }
