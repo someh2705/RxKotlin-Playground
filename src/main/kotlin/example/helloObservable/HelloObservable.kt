@@ -30,11 +30,19 @@ class HelloObservable {
         maybe.subscribeBy(onSuccess = {
             println(it)
         })
+
+        Maybe.create<String> { it.onComplete() }.subscribeBy(onSuccess = {
+            println("Maybe Success!")
+        }, onComplete = {
+            println("Maybe Complete!")
+        })
     }
 
     fun main() {
         println("SingleObservable")
         singleObservable()
+
+        println("\n")
 
         println("MaybeObservable")
         maybeObservable()
