@@ -1,5 +1,6 @@
+import example.helloObservable.HelloObservable
 import example.helloObserver.HelloObserver
 
 fun main() {
-    HelloObserver().main()
+    HelloObservable().main()
 }
