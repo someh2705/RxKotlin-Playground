@@ -1,8 +1,7 @@
 package example.helloObservable
 
-import io.reactivex.rxjava3.core.Maybe
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.core.*
+import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.functions.Consumer
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import io.reactivex.rxjava3.kotlin.toObservable
@@ -38,6 +37,24 @@ class HelloObservable {
         })
     }
 
+    private fun completableObservable() {
+        val completable = Completable.create{ it.onComplete() }
+
+        completable.subscribe(object : CompletableObserver {
+            override fun onSubscribe(d: Disposable?) {
+                println("CompletableObservable Subscribe!")
+            }
+
+            override fun onComplete() {
+                println("CompletableObservable Complete!")
+            }
+
+            override fun onError(e: Throwable?) {
+                println("CompletableObservable Error!")
+            }
+        })
+    }
+
     fun main() {
         println("SingleObservable")
         singleObservable()
@@ -46,5 +63,10 @@ class HelloObservable {
 
         println("MaybeObservable")
         maybeObservable()
+
+        println("\n")
+
+        println("CompletableObservable")
+        completableObservable()
     }
 }
