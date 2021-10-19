@@ -1,10 +1,12 @@
 package example.helloObservable
 
+import io.reactivex.rxjava3.annotations.NonNull
 import io.reactivex.rxjava3.core.*
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.functions.Consumer
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import io.reactivex.rxjava3.kotlin.toObservable
+import java.util.concurrent.TimeUnit
 
 class HelloObservable {
     private fun singleObservable() {
@@ -70,6 +72,19 @@ class HelloObservable {
         })
     }
 
+    private fun defer() {
+        val source = Observable.defer {
+            println("Create an Observable")
+            Observable.just("Hello defer")
+        }
+
+        source.subscribeBy(onNext = {
+            println("Next: $it")
+        }, onComplete = {
+            println("Completed")
+        })
+    }
+
     fun main() {
 //        println("SingleObservable")
 //        singleObservable()
@@ -83,6 +98,7 @@ class HelloObservable {
 //
 //        println("CompletableObservable")
 //        completableObservable()
-        create()
+//        create()
+        defer()
     }
 }
