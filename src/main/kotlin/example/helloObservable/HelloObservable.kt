@@ -38,7 +38,7 @@ class HelloObservable {
     }
 
     private fun completableObservable() {
-        val completable = Completable.create{ it.onComplete() }
+        val completable = Completable.create { it.onComplete() }
 
         completable.subscribe(object : CompletableObserver {
             override fun onSubscribe(d: Disposable?) {
@@ -55,18 +55,34 @@ class HelloObservable {
         })
     }
 
+    private fun create() {
+        val source = Observable.create<Int> {
+            for (i in 1..5) {
+                it.onNext(i)
+            }
+            it.onComplete()
+        }
+
+        source.subscribeBy(onNext = {
+            println(it)
+        }, onComplete = {
+            println("Completed!")
+        })
+    }
+
     fun main() {
-        println("SingleObservable")
-        singleObservable()
-
-        println("\n")
-
-        println("MaybeObservable")
-        maybeObservable()
-
-        println("\n")
-
-        println("CompletableObservable")
-        completableObservable()
+//        println("SingleObservable")
+//        singleObservable()
+//
+//        println("\n")
+//
+//        println("MaybeObservable")
+//        maybeObservable()
+//
+//        println("\n")
+//
+//        println("CompletableObservable")
+//        completableObservable()
+        create()
     }
 }
