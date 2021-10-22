@@ -21,6 +21,13 @@ class HelloObservable {
         })
     }
 
+    private fun singleFromObservable() {
+        val source = Observable.just("Hello Single")
+        Single.fromObservable(source).subscribe { it ->
+            println(it)
+        }
+    }
+
     private fun maybeObservable() {
         val maybe = Maybe.just("Hello Maybe")
 
@@ -99,6 +106,7 @@ class HelloObservable {
 //        println("CompletableObservable")
 //        completableObservable()
 //        create()
-        defer()
+//        defer()
+        singleFromObservable()
     }
 }
