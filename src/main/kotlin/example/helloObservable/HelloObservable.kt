@@ -93,20 +93,32 @@ class HelloObservable {
     }
 
     fun main() {
-//        println("SingleObservable")
-//        singleObservable()
-//
-//        println("\n")
-//
-//        println("MaybeObservable")
-//        maybeObservable()
-//
-//        println("\n")
-//
-//        println("CompletableObservable")
-//        completableObservable()
-//        create()
-//        defer()
+        println("# SingleObservable")
+        singleObservable()
+
+        println("\n")
+
+        println("# MaybeObservable")
+        maybeObservable()
+
+        println("\n")
+
+        println("# CompletableObservable")
+        completableObservable()
+
+        println("\n")
+
+        println("# Observable.create()")
+        create()
+
+        println("\n")
+
+        println("# Observable.defer")
+        defer()
+
+        println("\n")
+
+        println("# Single from Observable")
         singleFromObservable()
     }
 }
