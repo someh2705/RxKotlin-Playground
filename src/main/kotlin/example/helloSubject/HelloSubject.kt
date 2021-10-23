@@ -18,9 +18,31 @@ class HelloSubject {
         runBlocking { delay(300) }
     }
 
+    fun behaviorSubject() {
+        val observable = Observable.interval(100, TimeUnit.MILLISECONDS) 
+        val subject = BehaviorSubject.create<long>() 
+        
+        observable.subscribe(subject) 
+        
+        runBlocking { delay(300) } 
+        
+        subject.subscribe { println("1st: $it") } 
+        
+        runBlocking { delay(300) } 
+        
+        subject.subscribe { println("2nd: $it") } 
+        
+        runBlocking { delay(300) }
+    }
+
     fun main() {
         println("# PublishSubject")
         publishSubject()
+
+        println("\n")
+
+        println("# BehaviorSubject")
+        behaviorSubject()
 
         println("\n")
     }
