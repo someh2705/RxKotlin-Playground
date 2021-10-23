@@ -1,7 +1,7 @@
 package example.helloSubject
 
 class HelloSubject {
-    fun main() {
+    fun publishSubject() {
         val observable = Observable.interval(100, TimeUnit.MILLISECONDS) 
         val subject = PublishSubject.create<Long>() 
         
@@ -16,5 +16,12 @@ class HelloSubject {
         subject.subscribe { println("2nd: $it") } 
         
         runBlocking { delay(300) }
+    }
+
+    fun main() {
+        println("# PublishSubject")
+        publishSubject()
+
+        println("\n")
     }
 }
